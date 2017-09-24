@@ -54,12 +54,13 @@ def main():
             print("There was an error retrieving the data. Check your internet connection and try again.")
             sys.exit(0)
 
-        data = json.loads(response.read())
+        data = json.loads(response)
         resultCount = data["resultCount"] 
         print(str(resultCount) + " results were found. Displaying the top ten now")
         for i in range(resultCount):
-            print(str(i+1) + ": " + data["results"][i]["trackName"].encode("ascii", "ignore"))[:ttyLen]
-            print("  artist: "+ data["results"][i]["artistName"].encode("ascii", "ignore"))[:ttyLen]
+            print(str(i+1) + ": " + data["results"][i]["trackName"])
+            print("  artist: "+ data["results"][i]["artistName"])
+            
 
         try:
             userSelection = int(input("Enter a number (0 if none): "))
@@ -119,7 +120,7 @@ def main():
 
     print("The newest titles are:")
     for i in range(min(10, len(titles))):
-        print titles[i].firstChild.nodeValue.strip('\n')
+        print (titles[i].firstChild.nodeValue.strip('\n'))
 
     # get how the user wants to download the files
 
