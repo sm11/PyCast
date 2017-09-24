@@ -56,8 +56,11 @@ def main():
 
         data = json.loads(response)
         resultCount = data["resultCount"] 
-        print(str(resultCount) + " results were found. Displaying the top ten now")
-        for i in range(resultCount):
+        print(str(resultCount) + " results were found. Displaying results:")
+        
+        #can display top ten by changing to:
+        #for i in range(min(10,resultCount))
+        for i in range(resultCount)):
             print(str(i+1) + ": " + data["results"][i]["trackName"])
             print("  artist: "+ data["results"][i]["artistName"])
             
